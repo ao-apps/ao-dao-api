@@ -1,6 +1,6 @@
 /*
  * ao-dao - Simple data access objects framework.
- * Copyright (C) 2013, 2015  AO Industries, Inc.
+ * Copyright (C) 2013, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -54,13 +54,13 @@ public interface Tuple<
 	@Override
 	int hashCode();
 
-    /**
-     * The default ordering is based on column value comparisons.  If both values
-     * are Strings, will use the model collator.
+	/**
+	 * The default ordering is based on column value comparisons.  If both values
+	 * are Strings, will use the model collator.
 	 *
 	 * If one tuple has few columns than the other, and all the values are equal,
 	 * the tuple with fewer columns is considered to be first.
-     */
-    // @Override
-    int compareTo(T o);
+	 */
+	// @Override
+	int compareTo(T o);
 }

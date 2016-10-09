@@ -1,6 +1,6 @@
 /*
  * ao-dao - Simple data access objects framework.
- * Copyright (C) 2011, 2013, 2015  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,16 +29,16 @@ public class ReasonsSQLException
 	extends SQLException
 {
 
-    private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 2L;
 
-    private final List<? extends Reason> reasons;
+	private final List<? extends Reason> reasons;
 
-    public ReasonsSQLException(String message, List<? extends Reason> reasons) {
-        super(message);
-        this.reasons = reasons;
-    }
+	public ReasonsSQLException(String message, List<? extends Reason> reasons) {
+		super(message);
+		this.reasons = reasons;
+	}
 
-    public List<? extends Reason> getReasons() {
-        return reasons;
-    }
+	public List<? extends Reason> getReasons() {
+		return reasons;
+	}
 }

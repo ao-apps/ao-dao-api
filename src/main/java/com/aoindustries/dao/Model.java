@@ -32,40 +32,40 @@ import java.util.Map;
  */
 public interface Model {
 
-    /**
-     * Gets the name of this model.
-     */
-    String getName();
+	/**
+	 * Gets the name of this model.
+	 */
+	String getName();
 
-    /**
-     * Gets the collator used by this model.
-     */
-    Collator getCollator();
+	/**
+	 * Gets the collator used by this model.
+	 */
+	Collator getCollator();
 
-    /**
-     * Gets the set of all tables in this model.  This is a map keyed on table
-     * name to be useful in JSP EL without requiring a separate getter for each
-     * table.
-     */
-    Map<String,? extends Table<?,?>> getTables();
+	/**
+	 * Gets the set of all tables in this model.  This is a map keyed on table
+	 * name to be useful in JSP EL without requiring a separate getter for each
+	 * table.
+	 */
+	Map<String,? extends Table<?,?>> getTables();
 
-    /**
-     * Clears all caches for all tables for the current thread.
-     */
-    default void clearAllCaches() {
-        for(Table<?,?> table : getTables().values()) table.clearCaches();
-    }
+	/**
+	 * Clears all caches for all tables for the current thread.
+	 */
+	default void clearAllCaches() {
+		for(Table<?,?> table : getTables().values()) table.clearCaches();
+	}
 
-    /**
-     * Executes a transaction between any number of calls to this model and its tables.
-     */
-    void executeTransaction(Runnable runnable) throws SQLException;
+	/**
+	 * Executes a transaction between any number of calls to this model and its tables.
+	 */
+	void executeTransaction(Runnable runnable) throws SQLException;
 
-    /**
-     * Gets the set of all reports that are supported by this repository implementation, keyed on its unique name.
-     */
-    default Map<String,? extends Report> getReports() throws SQLException {
+	/**
+	 * Gets the set of all reports that are supported by this repository implementation, keyed on its unique name.
+	 */
+	default Map<String,? extends Report> getReports() throws SQLException {
 		// By default, there are no reports.
-        return Collections.emptyMap();
-    }
+		return Collections.emptyMap();
+	}
 }

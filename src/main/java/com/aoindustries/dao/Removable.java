@@ -1,6 +1,6 @@
 /*
  * ao-dao - Simple data access objects framework.
- * Copyright (C) 2011, 2013, 2015  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -27,13 +27,13 @@ import java.util.List;
 
 public interface Removable {
 
-    /**
-     * Gets a list of reasons why this row cannot be removed.  An empty list
-     * indicates the row is removable.
-     *
-     * @see  Table#addUsedByReason
-     */
-    List<? extends Reason> getCannotRemoveReasons() throws SQLException;
+	/**
+	 * Gets a list of reasons why this row cannot be removed.  An empty list
+	 * indicates the row is removable.
+	 *
+	 * @see  Table#addUsedByReason
+	 */
+	List<? extends Reason> getCannotRemoveReasons() throws SQLException;
 
-    void remove() throws SecurityException, ReasonsSQLException, SQLException;
+	void remove() throws SecurityException, ReasonsSQLException, SQLException;
 }

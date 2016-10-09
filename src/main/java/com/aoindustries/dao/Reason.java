@@ -1,6 +1,6 @@
 /*
  * ao-dao - Simple data access objects framework.
- * Copyright (C) 2011, 2013, 2015  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,13 +29,13 @@ public interface Reason
 	/**
 	 * Gets the textual reason.
 	 */
-    @Override
-    String toString();
+	@Override
+	String toString();
 
-    /**
-     * Merges this reason with the provided reason, if possible.
-     *
-     * @return  the new reason or <code>null</code> if they cannot be merged.
-     */
+	/**
+	 * Merges this reason with the provided reason, if possible.
+	 *
+	 * @return  the new reason or <code>null</code> if they cannot be merged.
+	 */
 	Reason merge(Reason other);
 }
