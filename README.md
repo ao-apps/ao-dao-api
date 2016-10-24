@@ -4,7 +4,7 @@ Simple data access objects framework API.
 ## Project Links
 * [Project Home](https://www.aoindustries.com/ao-dao/api/)
 * [API Docs](https://www.aoindustries.com/ao-dao/api/apidocs/)
-* [Maven Central Repository](https://search.maven.org/#search|gav|1|g:%22com.aoindustries%22%20AND%20a:%22ao-dao-api%22)
+* [Maven Central Repository](https://search.maven.org/#search%7Cgav%7C1%7Cg:%22com.aoindustries%22%20AND%20a:%22ao-dao-api%22)
 * [GitHub](https://github.com/aoindustries/ao-dao-api)
 
 ## Contact Us
