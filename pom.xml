@@ -33,7 +33,7 @@ along with ao-dao-api.  If not, see <http://www.gnu.org/licenses />.
 
 	<groupId>com.aoindustries</groupId>
 	<artifactId>ao-dao-api</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.4-validation-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<properties>
