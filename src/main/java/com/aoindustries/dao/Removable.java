@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -30,8 +30,6 @@ public interface Removable {
 	/**
 	 * Gets a list of reasons why this row cannot be removed.  An empty list
 	 * indicates the row is removable.
-	 *
-	 * @see  Table#addUsedByReason
 	 */
 	List<? extends Reason> getCannotRemoveReasons() throws SQLException;
 
