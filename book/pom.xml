@@ -35,8 +35,6 @@ along with ao-dao-api.  If not, see <http://www.gnu.org/licenses />.
 	<properties>
 		<!-- These values are copied from the project being documented -->
 		<documented.artifactId>ao-dao-api</documented.artifactId>
-		<documented.javaVersion>1.8</documented.javaVersion>
-		<documented.javac.link.javaApi>${javac.link.javaApi.jdk8}</documented.javac.link.javaApi>
 		<documented.name>AO DAO API</documented.name>
 		<documented.shortTitle>API</documented.shortTitle>
 		<documented.description>Simple data access objects framework API.</documented.description>
