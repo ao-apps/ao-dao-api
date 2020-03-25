@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2012, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,7 +23,7 @@
 package com.aoindustries.dao;
 
 import com.aoindustries.dbc.NoRowException;
-import com.aoindustries.util.WrappedException;
+import com.aoindustries.exception.WrappedException;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Collections;
