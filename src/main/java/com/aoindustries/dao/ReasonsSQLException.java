@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -33,11 +33,15 @@ public class ReasonsSQLException
 
 	private final List<? extends Reason> reasons;
 
+	/**
+	 * @param  reasons  No defensive copy is made
+	 */
 	public ReasonsSQLException(String message, List<? extends Reason> reasons) {
 		super(message);
 		this.reasons = reasons;
 	}
 
+	@SuppressWarnings("ReturnOfCollectionOrArrayField") // No defensive copy is made
 	public List<? extends Reason> getReasons() {
 		return reasons;
 	}

@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -53,7 +53,9 @@ public interface Model {
 	 * Clears all caches for all tables for the current thread.
 	 */
 	default void clearAllCaches() {
-		for(Table<?,?> table : getTables().values()) table.clearCaches();
+		for(Table<?,?> table : getTables().values()) {
+			table.clearCaches();
+		}
 	}
 
 	/**

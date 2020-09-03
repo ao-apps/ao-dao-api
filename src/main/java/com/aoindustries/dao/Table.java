@@ -91,8 +91,11 @@ public interface Table<
 	}
 
 	@Override
+	@SuppressWarnings("element-type-mismatch")
 	default boolean containsAll(Collection<?> c) {
-		for(Object o : c) if(!contains(o)) return false;
+		for(Object o : c) {
+			if(!contains(o)) return false;
+		}
 		return true;
 	}
 
@@ -107,6 +110,7 @@ public interface Table<
 	}
 
 	@Override
+	@SuppressWarnings("SuspiciousToArrayCall")
 	default <T> T[] toArray(T[] a) {
 		try {
 			return getRows().toArray(a);
@@ -125,6 +129,7 @@ public interface Table<
 	}
 
 	@Override
+	@SuppressWarnings("element-type-mismatch")
 	default boolean contains(Object o) {
 		return getMap().containsValue(o);
 	}
