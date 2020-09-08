@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.text.Collator;
 import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.Callable;
 
 /**
  * A model is a collection of tables, and a collection of reports.
@@ -60,8 +61,30 @@ public interface Model {
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
+	 *
+	 * @see  #transaction(java.util.concurrent.Callable)
 	 */
-	void executeTransaction(Runnable runnable) throws SQLException;
+	default void transaction(Runnable runnable) throws SQLException {
+		transaction(() -> {
+			runnable.run();
+			return null;
+		});
+	}
+
+	/**
+	 * @deprecated  Please use {@link #transaction(java.lang.Runnable)}
+	 */
+	@Deprecated
+	default void executeTransaction(Runnable runnable) throws SQLException {
+		transaction(runnable);
+	}
+
+	/**
+	 * Executes a transaction between any number of calls to this model and its tables.
+	 *
+	 * @see  #transaction(java.lang.Runnable)
+	 */
+	<V> V transaction(Callable<V> callable) throws SQLException;
 
 	/**
 	 * Gets the set of all reports that are supported by this repository implementation, keyed on its unique name.
