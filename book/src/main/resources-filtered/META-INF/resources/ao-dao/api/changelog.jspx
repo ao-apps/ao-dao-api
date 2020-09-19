@@ -37,7 +37,7 @@ along with ao-dao-api.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:23:42-0500"
-		dateModified="2020-09-08T07:06:36-05:00"
+		dateModified="2020-09-19T03:35:59-05:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-dao-api:pom.version}" />
@@ -54,11 +54,11 @@ along with ao-dao-api.  If not, see <http://www.gnu.org/licenses />.
 				scmUrl="@{project.scm.url}"
 			>
 				<ul>
-					<li>New method <code>Model.transaction(Callable)</code>.</li>
+					<li>New methods <code>Model.call(…)</code>.</li>
 					<li>
 						Renamed <code>Model.executeTransaction(Runnable)</code> to
-						<code>Model.transaction(Runnable)</code>, and added a default implementation that calls
-						<code>Model.transaction(Callable)</code>.
+						<code>Model.run(Runnable)</code>, and added a default implementation that calls
+						<code>Model.call(Callable)</code>.
 					</li>
 				</ul>
 			</changelog:release>

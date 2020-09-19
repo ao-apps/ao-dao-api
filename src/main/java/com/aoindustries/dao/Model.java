@@ -22,11 +22,12 @@
  */
 package com.aoindustries.dao;
 
+import com.aoindustries.lang.RunnableE;
+import com.aoindustries.util.concurrent.CallableE;
 import java.sql.SQLException;
 import java.text.Collator;
 import java.util.Collections;
 import java.util.Map;
-import java.util.concurrent.Callable;
 
 /**
  * A model is a collection of tables, and a collection of reports.
@@ -62,29 +63,50 @@ public interface Model {
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #transaction(java.util.concurrent.Callable)
+	 * @see  #run(java.lang.Runnable)
 	 */
-	default void transaction(Runnable runnable) throws SQLException {
-		transaction(() -> {
+	default <V> V call(CallableE<? extends V,? extends RuntimeException> callable) throws SQLException {
+		return call(RuntimeException.class, callable);
+	}
+
+	/**
+	 * Executes a transaction between any number of calls to this model and its tables.
+	 *
+	 * @see  #run(java.lang.Class, com.aoindustries.lang.RunnableE)
+	 */
+	<V,E extends Throwable> V call(Class<? extends E> eClass, CallableE<? extends V,? extends E> callable) throws SQLException, E;
+
+	/**
+	 * Executes a transaction between any number of calls to this model and its tables.
+	 *
+	 * @see  #call(com.aoindustries.util.concurrent.CallableE)
+	 */
+	default void run(Runnable runnable) throws SQLException {
+		call(() -> {
 			runnable.run();
 			return null;
 		});
 	}
 
 	/**
-	 * @deprecated  Please use {@link #transaction(java.lang.Runnable)}
+	 * @deprecated  Please use {@link #run(java.lang.Runnable)}
 	 */
 	@Deprecated
 	default void executeTransaction(Runnable runnable) throws SQLException {
-		transaction(runnable);
+		run(runnable);
 	}
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #transaction(java.lang.Runnable)
+	 * @see  #call(java.lang.Class, com.aoindustries.util.concurrent.CallableE)
 	 */
-	<V> V transaction(Callable<V> callable) throws SQLException;
+	default <E extends Throwable> void run(Class<? extends E> eClass, RunnableE<? extends E> runnable) throws SQLException, E {
+		call(eClass, () -> {
+			runnable.run();
+			return null;
+		});
+	}
 
 	/**
 	 * Gets the set of all reports that are supported by this repository implementation, keyed on its unique name.
