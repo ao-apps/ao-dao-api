@@ -63,10 +63,10 @@ public interface Model {
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #run(java.lang.Runnable)
+	 * @see  #run(com.aoindustries.lang.RunnableE)
 	 */
-	default <V> V call(CallableE<? extends V,? extends RuntimeException> callable) throws SQLException {
-		return call(RuntimeException.class, callable);
+	default <V> V call(CallableE<? extends V,? extends SQLException> callable) throws SQLException {
+		return call(SQLException.class, callable);
 	}
 
 	/**
@@ -81,19 +81,19 @@ public interface Model {
 	 *
 	 * @see  #call(com.aoindustries.util.concurrent.CallableE)
 	 */
-	default void run(Runnable runnable) throws SQLException {
-		call(() -> {
+	default void run(RunnableE<? extends SQLException> runnable) throws SQLException {
+		call(SQLException.class, () -> {
 			runnable.run();
 			return null;
 		});
 	}
 
 	/**
-	 * @deprecated  Please use {@link #run(java.lang.Runnable)}
+	 * @deprecated  Please use {@link #run(com.aoindustries.lang.RunnableE)}
 	 */
 	@Deprecated
 	default void executeTransaction(Runnable runnable) throws SQLException {
-		run(runnable);
+		run(() -> runnable.run());
 	}
 
 	/**
