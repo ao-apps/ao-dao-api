@@ -63,46 +63,46 @@ public interface Model {
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #run(com.aoindustries.lang.RunnableE)
+	 * @see  #transactionRun(com.aoindustries.lang.RunnableE)
 	 */
-	default <V> V call(CallableE<? extends V,? extends SQLException> callable) throws SQLException {
-		return call(SQLException.class, callable);
+	default <V> V transactionCall(CallableE<? extends V,? extends SQLException> callable) throws SQLException {
+		return transactionCall(SQLException.class, callable);
 	}
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #run(java.lang.Class, com.aoindustries.lang.RunnableE)
+	 * @see  #transactionRun(java.lang.Class, com.aoindustries.lang.RunnableE)
 	 */
-	<V,E extends Throwable> V call(Class<? extends E> eClass, CallableE<? extends V,? extends E> callable) throws SQLException, E;
+	<V,E extends Throwable> V transactionCall(Class<? extends E> eClass, CallableE<? extends V,? extends E> callable) throws SQLException, E;
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #call(com.aoindustries.util.concurrent.CallableE)
+	 * @see  #transactionCall(com.aoindustries.util.concurrent.CallableE)
 	 */
-	default void run(RunnableE<? extends SQLException> runnable) throws SQLException {
-		call(SQLException.class, () -> {
+	default void transactionRun(RunnableE<? extends SQLException> runnable) throws SQLException {
+		transactionCall(SQLException.class, () -> {
 			runnable.run();
 			return null;
 		});
 	}
 
 	/**
-	 * @deprecated  Please use {@link #run(com.aoindustries.lang.RunnableE)}
+	 * @deprecated  Please use {@link #transactionRun(com.aoindustries.lang.RunnableE)}
 	 */
 	@Deprecated
 	default void executeTransaction(Runnable runnable) throws SQLException {
-		run(() -> runnable.run());
+		transactionRun(() -> runnable.run());
 	}
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #call(java.lang.Class, com.aoindustries.util.concurrent.CallableE)
+	 * @see  #transactionCall(java.lang.Class, com.aoindustries.util.concurrent.CallableE)
 	 */
-	default <E extends Throwable> void run(Class<? extends E> eClass, RunnableE<? extends E> runnable) throws SQLException, E {
-		call(eClass, () -> {
+	default <E extends Throwable> void transactionRun(Class<? extends E> eClass, RunnableE<? extends E> runnable) throws SQLException, E {
+		transactionCall(eClass, () -> {
 			runnable.run();
 			return null;
 		});
