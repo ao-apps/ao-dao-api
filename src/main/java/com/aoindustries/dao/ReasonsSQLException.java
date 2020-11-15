@@ -22,6 +22,7 @@
  */
 package com.aoindustries.dao;
 
+import com.aoindustries.lang.Throwables;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,8 +42,19 @@ public class ReasonsSQLException
 		this.reasons = reasons;
 	}
 
-	@SuppressWarnings("ReturnOfCollectionOrArrayField") // No defensive copy is made
+	/**
+	 * @return  No defensive copy is made
+	 */
+	@SuppressWarnings("ReturnOfCollectionOrArrayField")
 	public List<? extends Reason> getReasons() {
 		return reasons;
+	}
+
+	static {
+		Throwables.registerSurrogateFactory(ReasonsSQLException.class, (template, cause) -> {
+			ReasonsSQLException newEx = new ReasonsSQLException(template.getMessage(), template.reasons);
+			newEx.initCause(cause);
+			return newEx;
+		});
 	}
 }
