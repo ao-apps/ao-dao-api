@@ -36,9 +36,20 @@ public class ReasonsSQLException
 
 	/**
 	 * @param  reasons  No defensive copy is made
+	 *
+	 * @deprecated  Please provide SQLSTATE to {@link #ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
 	 */
+	@Deprecated
 	public ReasonsSQLException(String message, List<? extends Reason> reasons) {
 		super(message);
+		this.reasons = reasons;
+	}
+
+	/**
+	 * @param  reasons  No defensive copy is made
+	 */
+	public ReasonsSQLException(String message, String sqlState, List<? extends Reason> reasons) {
+		super(message, sqlState);
 		this.reasons = reasons;
 	}
 
@@ -52,7 +63,7 @@ public class ReasonsSQLException
 
 	static {
 		Throwables.registerSurrogateFactory(ReasonsSQLException.class, (template, cause) -> {
-			ReasonsSQLException newEx = new ReasonsSQLException(template.getMessage(), template.reasons);
+			ReasonsSQLException newEx = new ReasonsSQLException(template.getMessage(), template.getSQLState(), template.reasons);
 			newEx.initCause(cause);
 			return newEx;
 		});
