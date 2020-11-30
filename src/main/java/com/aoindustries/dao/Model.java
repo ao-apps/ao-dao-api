@@ -25,8 +25,8 @@ package com.aoindustries.dao;
 import com.aoindustries.lang.RunnableE;
 import com.aoindustries.util.concurrent.CallableE;
 import java.sql.SQLException;
-import java.text.Collator;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 
 /**
@@ -40,9 +40,9 @@ public interface Model {
 	String getName();
 
 	/**
-	 * Gets the collator used by this model.
+	 * Gets the comparator used by this model.
 	 */
-	Collator getCollator();
+	Comparator<? super String> getComparator();
 
 	/**
 	 * Gets the set of all tables in this model.  This is a map keyed on table
