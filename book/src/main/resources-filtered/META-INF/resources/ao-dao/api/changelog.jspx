@@ -37,7 +37,7 @@ along with ao-dao-api.  If not, see <http://www.gnu.org/licenses />.
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-29T19:23:42-0500"
-		dateModified="2020-11-29T22:24:29-06:00"
+		dateModified="2020-11-29T22:59:57-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.aoindustries:ao-dao-api:pom.version}" />
@@ -52,37 +52,46 @@ along with ao-dao-api.  If not, see <http://www.gnu.org/licenses />.
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>New methods <code>Model.transactionCall(…)</code>.</li>
-					<li>
-						Renamed <code>Model.executeTransaction(Runnable)</code> to
-						<code>Model.transactionRun(Runnable)</code>, and added a default implementation that calls
-						<code>Model.transactionCall(Callable)</code>.
-					</li>
-					<li>
-						<p>
-							Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
-							of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
-							cause of the new throwable.  When not wrapped, the original throwable is used directly and
-							caller stack trace is lost.
-						</p>
-						<p>
-							This is used to maintain exception types and states across thread boundaries, such as when an exception cause
-							is obtained from an <code>ExecutionException</code>.
-						</p>
-					</li>
-					<li>
-						Defined <ao:a href="https://en.wikipedia.org/wiki/SQLSTATE">SQLSTATE</ao:a> values for all
-						<ao:a rel="nofollow" href="@{javadoc.link.javase}java/sql/SQLException.html">SQLException</ao:a>.
-					</li>
-					<li>
-						Now sorting with <ao:a rel="nofollow" href="@{javadoc.link.javase}java/util/Comparator.html">Comparator</ao:a>
-						instead of <ao:a rel="nofollow" href="@{javadoc.link.javase}java/text/Collator.html">Collator</ao:a>.
-					</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="2.0.0"
+			datePublished="2020-11-29T22:59:57-06:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>New methods <code>Model.transactionCall(…)</code>.</li>
+				<li>
+					Renamed <code>Model.executeTransaction(Runnable)</code> to
+					<code>Model.transactionRun(Runnable)</code>, and added a default implementation that calls
+					<code>Model.transactionCall(Callable)</code>.
+				</li>
+				<li>
+					<p>
+						Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
+						of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
+						cause of the new throwable.  When not wrapped, the original throwable is used directly and
+						caller stack trace is lost.
+					</p>
+					<p>
+						This is used to maintain exception types and states across thread boundaries, such as when an exception cause
+						is obtained from an <code>ExecutionException</code>.
+					</p>
+				</li>
+				<li>
+					Defined <ao:a href="https://en.wikipedia.org/wiki/SQLSTATE">SQLSTATE</ao:a> values for all
+					<ao:a rel="nofollow" href="@{javadoc.link.javase}java/sql/SQLException.html">SQLException</ao:a>.
+				</li>
+				<li>
+					Now sorting with <ao:a rel="nofollow" href="@{javadoc.link.javase}java/util/Comparator.html">Comparator</ao:a>
+					instead of <ao:a rel="nofollow" href="@{javadoc.link.javase}java/text/Collator.html">Collator</ao:a>.
+				</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"
