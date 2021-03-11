@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020  AO Industries, Inc.
+ * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -37,7 +37,7 @@ import java.util.TreeSet;
 
 public interface Table<
 	K extends Comparable<? super K>,
-	R extends Row<K,?>
+	R extends Row<K, ?>
 >
 	extends Collection<R>
 {
@@ -186,12 +186,12 @@ public interface Table<
 	/**
 	 * Gets a map view of this table.
 	 */
-	Map<K,? extends R> getMap();
+	Map<K, ? extends R> getMap();
 
 	/**
 	 * Gets a sorted map view of this table.
 	 */
-	SortedMap<K,? extends R> getSortedMap();
+	SortedMap<K, ? extends R> getSortedMap();
 
 	/**
 	 * Gets the table name.

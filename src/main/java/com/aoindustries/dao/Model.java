@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016, 2020  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -49,13 +49,13 @@ public interface Model {
 	 * name to be useful in JSP EL without requiring a separate getter for each
 	 * table.
 	 */
-	Map<String,? extends Table<?,?>> getTables();
+	Map<String, ? extends Table<?, ?>> getTables();
 
 	/**
 	 * Clears all caches for all tables for the current thread.
 	 */
 	default void clearAllCaches() {
-		for(Table<?,?> table : getTables().values()) {
+		for(Table<?, ?> table : getTables().values()) {
 			table.clearCaches();
 		}
 	}
@@ -65,16 +65,18 @@ public interface Model {
 	 *
 	 * @see  #transactionRun(com.aoindustries.lang.RunnableE)
 	 */
-	default <V> V transactionCall(CallableE<? extends V,? extends SQLException> callable) throws SQLException {
+	default <V> V transactionCall(CallableE<? extends V, ? extends SQLException> callable) throws SQLException {
 		return transactionCall(SQLException.class, callable);
 	}
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see  #transactionRun(java.lang.Class, com.aoindustries.lang.RunnableE)
 	 */
-	<V,E extends Throwable> V transactionCall(Class<? extends E> eClass, CallableE<? extends V,? extends E> callable) throws SQLException, E;
+	<V, Ex extends Throwable> V transactionCall(Class<? extends Ex> eClass, CallableE<? extends V, ? extends Ex> callable) throws SQLException, Ex;
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
@@ -99,9 +101,11 @@ public interface Model {
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
+	 * @param  <Ex>  An arbitrary exception type that may be thrown
+	 *
 	 * @see  #transactionCall(java.lang.Class, com.aoindustries.util.concurrent.CallableE)
 	 */
-	default <E extends Throwable> void transactionRun(Class<? extends E> eClass, RunnableE<? extends E> runnable) throws SQLException, E {
+	default <Ex extends Throwable> void transactionRun(Class<? extends Ex> eClass, RunnableE<? extends Ex> runnable) throws SQLException, Ex {
 		transactionCall(eClass, () -> {
 			runnable.run();
 			return null;
@@ -111,7 +115,7 @@ public interface Model {
 	/**
 	 * Gets the set of all reports that are supported by this repository implementation, keyed on its unique name.
 	 */
-	default Map<String,? extends Report> getReports() throws SQLException {
+	default Map<String, ? extends Report> getReports() throws SQLException {
 		// By default, there are no reports.
 		return Collections.emptyMap();
 	}

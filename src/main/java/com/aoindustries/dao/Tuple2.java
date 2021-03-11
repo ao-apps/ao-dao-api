@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2015, 2016, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -30,7 +30,7 @@ package com.aoindustries.dao;
 public interface Tuple2<
 	C1 extends Comparable<? super C1>,
 	C2 extends Comparable<? super C2>,
-	T extends Tuple2<C1,C2,T> & Comparable<? super T>
+	T extends Tuple2<C1, C2, T> & Comparable<? super T>
 >
 	extends Tuple<T>
 {

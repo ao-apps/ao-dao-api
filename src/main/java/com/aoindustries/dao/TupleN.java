@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2013, 2015, 2016, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -29,7 +29,7 @@ package com.aoindustries.dao;
  */
 public interface TupleN<
 	C extends Comparable<? super C>,
-	T extends TupleN<C,T> & Comparable<? super T>
+	T extends TupleN<C, T> & Comparable<? super T>
 >
 	extends Tuple<T>
 {

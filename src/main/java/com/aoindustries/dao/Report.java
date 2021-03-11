@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -124,7 +124,7 @@ public interface Report {
 	/**
 	 * Gets a display title of this report in the user locale with the provided parameters.
 	 */
-	String getTitle(Map<String,? extends Object> parameterValues);
+	String getTitle(Map<String, ? extends Object> parameterValues);
 
 	/**
 	 * Gets a description of this report in the user locale.
@@ -134,7 +134,7 @@ public interface Report {
 	/**
 	 * Gets a description of this report in the user locale with the provided parameters.
 	 */
-	String getDescription(Map<String,? extends Object> parameterValues);
+	String getDescription(Map<String, ? extends Object> parameterValues);
 
 	/**
 	 * Gets the set of parameters that this report requires.
@@ -144,5 +144,5 @@ public interface Report {
 	/**
 	 * Executes the report and gets the results.
 	 */
-	Result executeReport(Map<String,? extends Object> parameterValues) throws SQLException;
+	Result executeReport(Map<String, ? extends Object> parameterValues) throws SQLException;
 }

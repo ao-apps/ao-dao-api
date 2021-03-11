@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -24,13 +24,13 @@ package com.aoindustries.dao;
 
 public interface Row<
 	K extends Comparable<? super K>,
-	R extends Row<K,?> & Comparable<? super R>
+	R extends Row<K, ?> & Comparable<? super R>
 > {
 
 	/**
 	 * Gets the table this row is part of.
 	 */
-	Table<K,? extends R> getTable();
+	Table<K, ? extends R> getTable();
 
 	/**
 	 * Gets the key value for this row.
