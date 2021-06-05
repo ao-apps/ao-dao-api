@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2019, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,22 +20,18 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-dao-api.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.dao;
+package com.aoapps.dao;
 
-public interface Reason
-	extends Comparable<Reason>
-{
+import java.sql.SQLException;
+import java.util.List;
 
-	/**
-	 * Gets the textual reason.
-	 */
-	@Override
-	String toString();
+public interface Removable {
 
 	/**
-	 * Merges this reason with the provided reason, if possible.
-	 *
-	 * @return  the new reason or <code>null</code> if they cannot be merged.
+	 * Gets a list of reasons why this row cannot be removed.  An empty list
+	 * indicates the row is removable.
 	 */
-	Reason merge(Reason other);
+	List<? extends Reason> getCannotRemoveReasons() throws SQLException;
+
+	void remove() throws SecurityException, ReasonsSQLException, SQLException;
 }

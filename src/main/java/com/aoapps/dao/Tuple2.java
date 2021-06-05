@@ -20,7 +20,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-dao-api.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.dao;
+package com.aoapps.dao;
 
 /**
  * A compound key with two columns.

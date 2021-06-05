@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2013, 2015, 2016, 2021  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,25 +20,20 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-dao-api.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.dao;
+package com.aoapps.dao;
 
-/**
- * A compound key with three columns.
- *
- * @author  AO Industries, Inc.
- */
-public interface Tuple3<
-	C1 extends Comparable<? super C1>,
-	C2 extends Comparable<? super C2>,
-	C3 extends Comparable<? super C3>,
-	T extends Tuple3<C1, C2, C3, T> & Comparable<? super T>
->
-	extends Tuple<T>
-{
+public interface Row<
+	K extends Comparable<? super K>,
+	R extends Row<K, ?> & Comparable<? super R>
+> {
 
-	C1 getColumn1();
+	/**
+	 * Gets the table this row is part of.
+	 */
+	Table<K, ? extends R> getTable();
 
-	C2 getColumn2();
-
-	C3 getColumn3();
+	/**
+	 * Gets the key value for this row.
+	 */
+	K getKey();
 }

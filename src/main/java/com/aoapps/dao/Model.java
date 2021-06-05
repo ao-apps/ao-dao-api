@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-dao-api.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.dao;
+package com.aoapps.dao;
 
-import com.aoindustries.lang.RunnableE;
-import com.aoindustries.util.concurrent.CallableE;
+import com.aoapps.lang.RunnableE;
+import com.aoapps.lang.concurrent.CallableE;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Comparator;
@@ -63,7 +63,7 @@ public interface Model {
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #transactionRun(com.aoindustries.lang.RunnableE)
+	 * @see  #transactionRun(com.aoapps.lang.RunnableE)
 	 */
 	default <V> V transactionCall(CallableE<? extends V, ? extends SQLException> callable) throws SQLException {
 		return transactionCall(SQLException.class, callable);
@@ -74,14 +74,14 @@ public interface Model {
 	 *
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
-	 * @see  #transactionRun(java.lang.Class, com.aoindustries.lang.RunnableE)
+	 * @see  #transactionRun(java.lang.Class, com.aoapps.lang.RunnableE)
 	 */
 	<V, Ex extends Throwable> V transactionCall(Class<? extends Ex> eClass, CallableE<? extends V, ? extends Ex> callable) throws SQLException, Ex;
 
 	/**
 	 * Executes a transaction between any number of calls to this model and its tables.
 	 *
-	 * @see  #transactionCall(com.aoindustries.util.concurrent.CallableE)
+	 * @see  #transactionCall(com.aoapps.lang.concurrent.CallableE)
 	 */
 	default void transactionRun(RunnableE<? extends SQLException> runnable) throws SQLException {
 		transactionCall(SQLException.class, () -> {
@@ -91,7 +91,7 @@ public interface Model {
 	}
 
 	/**
-	 * @deprecated  Please use {@link #transactionRun(com.aoindustries.lang.RunnableE)}
+	 * @deprecated  Please use {@link #transactionRun(com.aoapps.lang.RunnableE)}
 	 */
 	@Deprecated
 	default void executeTransaction(Runnable runnable) throws SQLException {
@@ -103,7 +103,7 @@ public interface Model {
 	 *
 	 * @param  <Ex>  An arbitrary exception type that may be thrown
 	 *
-	 * @see  #transactionCall(java.lang.Class, com.aoindustries.util.concurrent.CallableE)
+	 * @see  #transactionCall(java.lang.Class, com.aoapps.lang.concurrent.CallableE)
 	 */
 	default <Ex extends Throwable> void transactionRun(Class<? extends Ex> eClass, RunnableE<? extends Ex> runnable) throws SQLException, Ex {
 		transactionCall(eClass, () -> {

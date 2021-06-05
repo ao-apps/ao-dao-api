@@ -20,10 +20,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-dao-api.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.aoindustries.dao;
+package com.aoapps.dao;
 
-import com.aoindustries.dbc.NoRowException;
-import com.aoindustries.exception.WrappedException;
+import com.aoapps.dbc.NoRowException;
+import com.aoapps.lang.exception.WrappedException;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Collections;
