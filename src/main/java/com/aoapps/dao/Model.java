@@ -95,7 +95,7 @@ public interface Model {
 	 */
 	@Deprecated
 	default void executeTransaction(Runnable runnable) throws SQLException {
-		transactionRun(() -> runnable.run());
+		transactionRun(runnable::run);
 	}
 
 	/**
