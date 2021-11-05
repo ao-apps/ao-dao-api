@@ -93,7 +93,7 @@ public interface Model {
 	/**
 	 * @deprecated  Please use {@link #transactionRun(com.aoapps.lang.RunnableE)}
 	 */
-	@Deprecated
+	@Deprecated(forRemoval = true)
 	default void executeTransaction(Runnable runnable) throws SQLException {
 		transactionRun(runnable::run);
 	}

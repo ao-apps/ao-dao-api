@@ -39,7 +39,7 @@ public class ReasonsSQLException
 	 *
 	 * @deprecated  Please provide SQLSTATE to {@link #ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
 	 */
-	@Deprecated
+	@Deprecated(forRemoval = false)
 	public ReasonsSQLException(String message, List<? extends Reason> reasons) {
 		super(message);
 		this.reasons = reasons;
