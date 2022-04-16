@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016, 2021  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -20,6 +20,7 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with ao-dao-api.  If not, see <https://www.gnu.org/licenses/>.
  */
+
 package com.aoapps.dao;
 
 import java.sql.SQLException;
