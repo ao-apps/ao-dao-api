@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2021  AO Industries, Inc.
+ * Copyright (C) 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -21,10 +21,10 @@
  * along with ao-dao-api.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.aoapps.dao.api {
-	exports com.aoapps.dao;
-	// Direct
-	requires com.aoapps.dbc; // <groupId>com.aoapps</groupId><artifactId>ao-dbc</artifactId>
-	requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
-	// Java SE
-	requires java.sql;
+  exports com.aoapps.dao;
+  // Direct
+  requires com.aoapps.dbc; // <groupId>com.aoapps</groupId><artifactId>ao-dbc</artifactId>
+  requires com.aoapps.lang; // <groupId>com.aoapps</groupId><artifactId>ao-lang</artifactId>
+  // Java SE
+  requires java.sql;
 }

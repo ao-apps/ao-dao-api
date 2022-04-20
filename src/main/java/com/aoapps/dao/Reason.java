@@ -24,19 +24,19 @@
 package com.aoapps.dao;
 
 public interface Reason
-	extends Comparable<Reason>
+  extends Comparable<Reason>
 {
 
-	/**
-	 * Gets the textual reason.
-	 */
-	@Override
-	String toString();
+  /**
+   * Gets the textual reason.
+   */
+  @Override
+  String toString();
 
-	/**
-	 * Merges this reason with the provided reason, if possible.
-	 *
-	 * @return  the new reason or <code>null</code> if they cannot be merged.
-	 */
-	Reason merge(Reason other);
+  /**
+   * Merges this reason with the provided reason, if possible.
+   *
+   * @return  the new reason or <code>null</code> if they cannot be merged.
+   */
+  Reason merge(Reason other);
 }

@@ -24,17 +24,17 @@
 package com.aoapps.dao;
 
 public interface Row<
-	K extends Comparable<? super K>,
-	R extends Row<K, ?> & Comparable<? super R>
+  K extends Comparable<? super K>,
+  R extends Row<K, ?> & Comparable<? super R>
 > {
 
-	/**
-	 * Gets the table this row is part of.
-	 */
-	Table<K, ? extends R> getTable();
+  /**
+   * Gets the table this row is part of.
+   */
+  Table<K, ? extends R> getTable();
 
-	/**
-	 * Gets the key value for this row.
-	 */
-	K getKey();
+  /**
+   * Gets the key value for this row.
+   */
+  K getKey();
 }

@@ -29,39 +29,39 @@ package com.aoapps.dao;
  * @author  AO Industries, Inc.
  */
 public interface Tuple<
-	T extends Tuple<T> & Comparable<? super T>
+  T extends Tuple<T> & Comparable<? super T>
 > {
 
-	/**
-	 * Gets an array of all column values.
-	 */
-	Comparable<?>[] getColumns();
+  /**
+   * Gets an array of all column values.
+   */
+  Comparable<?>[] getColumns();
 
-	/**
-	 * Based on the column values (column1,column2,...)
-	 */
-	@Override
-	String toString();
+  /**
+   * Based on the column values (column1,column2,...)
+   */
+  @Override
+  String toString();
 
-	/**
-	 * The equals is based on equal column values.
-	 */
-	@Override
-	boolean equals(Object obj);
+  /**
+   * The equals is based on equal column values.
+   */
+  @Override
+  boolean equals(Object obj);
 
-	/**
-	 * The hashCode is based on the column values.
-	 */
-	@Override
-	int hashCode();
+  /**
+   * The hashCode is based on the column values.
+   */
+  @Override
+  int hashCode();
 
-	/**
-	 * The default ordering is based on column value comparisons.  If both values
-	 * are Strings, will use {@linkplain Model#getComparator() the model comparator}.
-	 *
-	 * If one tuple has few columns than the other, and all the values are equal,
-	 * the tuple with fewer columns is considered to be first.
-	 */
-	// @Override
-	int compareTo(T o);
+  /**
+   * The default ordering is based on column value comparisons.  If both values
+   * are Strings, will use {@linkplain Model#getComparator() the model comparator}.
+   *
+   * If one tuple has few columns than the other, and all the values are equal,
+   * the tuple with fewer columns is considered to be first.
+   */
+  // @Override
+  int compareTo(T o);
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 ao-dao-api - Simple data access objects framework API.
-Copyright (C) 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -22,175 +22,175 @@ You should have received a copy of the GNU Lesser General Public License
 along with ao-dao-api.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <jsp:root
-	xmlns:ao="https://oss.aoapps.com/taglib/"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:changelog="https://semanticcms.com/changelog/taglib/"
-	xmlns:core="https://semanticcms.com/core/taglib/"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:jsp="http://java.sun.com/JSP/Page"
-	version="2.1"
+  xmlns:ao="https://oss.aoapps.com/taglib/"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:changelog="https://semanticcms.com/changelog/taglib/"
+  xmlns:core="https://semanticcms.com/core/taglib/"
+  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+  xmlns:jsp="http://java.sun.com/JSP/Page"
+  version="2.1"
 >
-	<jsp:directive.page language="java" pageEncoding="UTF-8" />
-	<jsp:directive.page session="false" />
-	<core:page
-		title="@{documented.name} Changelog"
-		shortTitle="Changelog"
-		tocLevels="1"
-		datePublished="2016-10-29T19:23:42-05:00"
-		dateModified="2021-07-20T02:42:46-05:00"
-	>
-		<c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
-			<changelog:release
-				projectName="@{documented.name}"
-				version="@{project.version}"
-				groupId="@{project.groupId}"
-				artifactId="@{documented.artifactId}"
-				repository="@{nexusUrl}content/repositories/snapshots/"
-				scmUrl="@{project.scm.url}"
-			/>
-		</c:if>
+  <jsp:directive.page language="java" pageEncoding="UTF-8" />
+  <jsp:directive.page session="false" />
+  <core:page
+    title="@{documented.name} Changelog"
+    shortTitle="Changelog"
+    tocLevels="1"
+    datePublished="2016-10-29T19:23:42-05:00"
+    dateModified="2021-07-20T02:42:46-05:00"
+  >
+    <c:if test="${fn:endsWith('@{project.version}', '-SNAPSHOT') and !fn:endsWith('@{project.version}', '-POST-SNAPSHOT')}">
+      <changelog:release
+        projectName="@{documented.name}"
+        version="@{project.version}"
+        groupId="@{project.groupId}"
+        artifactId="@{documented.artifactId}"
+        repository="@{nexusUrl}content/repositories/snapshots/"
+        scmUrl="@{project.scm.url}"
+      />
+    </c:if>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="3.0.0"
-			datePublished="2021-07-20T02:42:46-05:00"
-			groupId="@{project.groupId}"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Minimum Java version changed from 1.8 to 11.</li>
-				<li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
-				<li>Maven artifact relocated from <code>com.aoindustries:ao-dao-api</code> to <code>com.aoapps:ao-dao-api</code>.</li>
-				<li>Package renamed from <code>com.aoindustries.dao</code> to <code>com.aoapps.dao</code>.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="3.0.0"
+      datePublished="2021-07-20T02:42:46-05:00"
+      groupId="@{project.groupId}"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Minimum Java version changed from 1.8 to 11.</li>
+        <li>Now supports Java 9+ modules with included <code>module-info.class</code>.</li>
+        <li>Maven artifact relocated from <code>com.aoindustries:ao-dao-api</code> to <code>com.aoapps:ao-dao-api</code>.</li>
+        <li>Package renamed from <code>com.aoindustries.dao</code> to <code>com.aoapps.dao</code>.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="2.0.0"
-			datePublished="2020-11-29T22:59:57-06:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>New methods <code>Model.transactionCall(…)</code>.</li>
-				<li>
-					Renamed <code>Model.executeTransaction(Runnable)</code> to
-					<code>Model.transactionRun(Runnable)</code>, and added a default implementation that calls
-					<code>Model.transactionCall(Callable)</code>.
-				</li>
-				<li>
-					<p>
-						Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
-						of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
-						cause of the new throwable.  When not wrapped, the original throwable is used directly and
-						caller stack trace is lost.
-					</p>
-					<p>
-						This is used to maintain exception types and states across thread boundaries, such as when an exception cause
-						is obtained from an <code>ExecutionException</code>.
-					</p>
-				</li>
-				<li>
-					Defined <ao:a href="https://en.wikipedia.org/wiki/SQLSTATE">SQLSTATE</ao:a> values for all
-					<ao:a rel="nofollow" href="@{javadoc.link.javase}java.sql/java/sql/SQLException.html">SQLException</ao:a>.
-				</li>
-				<li>
-					Now sorting with <ao:a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Comparator.html">Comparator</ao:a>
-					instead of <ao:a rel="nofollow" href="@{javadoc.link.javase}java.base/java/text/Collator.html">Collator</ao:a>.
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="2.0.0"
+      datePublished="2020-11-29T22:59:57-06:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>New methods <code>Model.transactionCall(…)</code>.</li>
+        <li>
+          Renamed <code>Model.executeTransaction(Runnable)</code> to
+          <code>Model.transactionRun(Runnable)</code>, and added a default implementation that calls
+          <code>Model.transactionCall(Callable)</code>.
+        </li>
+        <li>
+          <p>
+            Now registering exception types for use with <code>Throwables.newSurrogate(…)</code> that supports creating new instances
+            of throwables in order to have caller stack trace.  When wrapped, the original throwable is the
+            cause of the new throwable.  When not wrapped, the original throwable is used directly and
+            caller stack trace is lost.
+          </p>
+          <p>
+            This is used to maintain exception types and states across thread boundaries, such as when an exception cause
+            is obtained from an <code>ExecutionException</code>.
+          </p>
+        </li>
+        <li>
+          Defined <ao:a href="https://en.wikipedia.org/wiki/SQLSTATE">SQLSTATE</ao:a> values for all
+          <ao:a rel="nofollow" href="@{javadoc.link.javase}java.sql/java/sql/SQLException.html">SQLException</ao:a>.
+        </li>
+        <li>
+          Now sorting with <ao:a rel="nofollow" href="@{javadoc.link.javase}java.base/java/util/Comparator.html">Comparator</ao:a>
+          instead of <ao:a rel="nofollow" href="@{javadoc.link.javase}java.base/java/text/Collator.html">Collator</ao:a>.
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.6"
-			datePublished="2020-03-28T17:37:32-05:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>
-					Reduced use of property substitutions in <code>pom.xml</code>.
-					This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.6"
+      datePublished="2020-03-28T17:37:32-05:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>
+          Reduced use of property substitutions in <code>pom.xml</code>.
+          This is to help 3rd-party parsers that fail to perform full Maven-compatible substitutions.
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.4"
-			datePublished="2019-06-21T02:26:24-05:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Using managed dependencies:
-					<ol>
-						<li>This project uses managed dependencies.</li>
-						<li>This project's managed dependencies may also be imported by other projects.</li>
-					</ol>
-				</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.4"
+      datePublished="2019-06-21T02:26:24-05:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Using managed dependencies:
+          <ol>
+            <li>This project uses managed dependencies.</li>
+            <li>This project's managed dependencies may also be imported by other projects.</li>
+          </ol>
+        </li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.3"
-			datePublished="2017-07-20T01:21:16-05:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Updated dependencies.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.3"
+      datePublished="2017-07-20T01:21:16-05:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Updated dependencies.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.2"
-			datePublished="2016-11-15T23:45:11-06:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>New <core:link book="/parent" page="/index.jspx" /> POM to simplify <code>pom.xml</code> files.</li>
-				<li>Project documentation moved to per-project book in <ao:a href="https://semanticcms.com/">SemanticCMS</ao:a> format.</li>
-				<li>Added changelog as top-level project link.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.2"
+      datePublished="2016-11-15T23:45:11-06:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>New <core:link book="/parent" page="/index.jspx" /> POM to simplify <code>pom.xml</code> files.</li>
+        <li>Project documentation moved to per-project book in <ao:a href="https://semanticcms.com/">SemanticCMS</ao:a> format.</li>
+        <li>Added changelog as top-level project link.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.1"
-			datePublished="2016-10-20T18:17:00-05:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Improved Javadoc formatting.</li>
-				<li>Improved README formatting.</li>
-			</ul>
-		</changelog:release>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.1"
+      datePublished="2016-10-20T18:17:00-05:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Improved Javadoc formatting.</li>
+        <li>Improved README formatting.</li>
+      </ul>
+    </changelog:release>
 
-		<changelog:release
-			projectName="@{documented.name}"
-			version="1.0.0"
-			datePublished="2016-10-09T16:20:00-05:00"
-			groupId="com.aoindustries"
-			artifactId="@{documented.artifactId}"
-			scmUrl="@{project.scm.url}"
-		>
-			<ul>
-				<li>Project moved to GitHub and Maven.</li>
-			</ul>
-		</changelog:release>
-	</core:page>
+    <changelog:release
+      projectName="@{documented.name}"
+      version="1.0.0"
+      datePublished="2016-10-09T16:20:00-05:00"
+      groupId="com.aoindustries"
+      artifactId="@{documented.artifactId}"
+      scmUrl="@{project.scm.url}"
+    >
+      <ul>
+        <li>Project moved to GitHub and Maven.</li>
+      </ul>
+    </changelog:release>
+  </core:page>
 </jsp:root>

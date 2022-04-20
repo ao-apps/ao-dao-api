@@ -28,45 +28,45 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ReasonsSQLException
-	extends SQLException
+  extends SQLException
 {
 
-	private static final long serialVersionUID = 2L;
+  private static final long serialVersionUID = 2L;
 
-	private final List<? extends Reason> reasons;
+  private final List<? extends Reason> reasons;
 
-	/**
-	 * @param  reasons  No defensive copy is made
-	 *
-	 * @deprecated  Please provide SQLSTATE to {@link #ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
-	 */
-	@Deprecated(forRemoval = false)
-	public ReasonsSQLException(String message, List<? extends Reason> reasons) {
-		super(message);
-		this.reasons = reasons;
-	}
+  /**
+   * @param  reasons  No defensive copy is made
+   *
+   * @deprecated  Please provide SQLSTATE to {@link #ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
+   */
+  @Deprecated(forRemoval = false)
+  public ReasonsSQLException(String message, List<? extends Reason> reasons) {
+    super(message);
+    this.reasons = reasons;
+  }
 
-	/**
-	 * @param  reasons  No defensive copy is made
-	 */
-	public ReasonsSQLException(String message, String sqlState, List<? extends Reason> reasons) {
-		super(message, sqlState);
-		this.reasons = reasons;
-	}
+  /**
+   * @param  reasons  No defensive copy is made
+   */
+  public ReasonsSQLException(String message, String sqlState, List<? extends Reason> reasons) {
+    super(message, sqlState);
+    this.reasons = reasons;
+  }
 
-	/**
-	 * @return  No defensive copy is made
-	 */
-	@SuppressWarnings("ReturnOfCollectionOrArrayField")
-	public List<? extends Reason> getReasons() {
-		return reasons;
-	}
+  /**
+   * @return  No defensive copy is made
+   */
+  @SuppressWarnings("ReturnOfCollectionOrArrayField")
+  public List<? extends Reason> getReasons() {
+    return reasons;
+  }
 
-	static {
-		Throwables.registerSurrogateFactory(ReasonsSQLException.class, (template, cause) -> {
-			ReasonsSQLException newEx = new ReasonsSQLException(template.getMessage(), template.getSQLState(), template.reasons);
-			newEx.initCause(cause);
-			return newEx;
-		});
-	}
+  static {
+    Throwables.registerSurrogateFactory(ReasonsSQLException.class, (template, cause) -> {
+      ReasonsSQLException newEx = new ReasonsSQLException(template.getMessage(), template.getSQLState(), template.reasons);
+      newEx.initCause(cause);
+      return newEx;
+    });
+  }
 }

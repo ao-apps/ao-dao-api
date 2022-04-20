@@ -28,11 +28,11 @@ import java.util.List;
 
 public interface Removable {
 
-	/**
-	 * Gets a list of reasons why this row cannot be removed.  An empty list
-	 * indicates the row is removable.
-	 */
-	List<? extends Reason> getCannotRemoveReasons() throws SQLException;
+  /**
+   * Gets a list of reasons why this row cannot be removed.  An empty list
+   * indicates the row is removable.
+   */
+  List<? extends Reason> getCannotRemoveReasons() throws SQLException;
 
-	void remove() throws SecurityException, ReasonsSQLException, SQLException;
+  void remove() throws SecurityException, ReasonsSQLException, SQLException;
 }

@@ -29,14 +29,14 @@ package com.aoapps.dao;
  * @author  AO Industries, Inc.
  */
 public interface Tuple2<
-	C1 extends Comparable<? super C1>,
-	C2 extends Comparable<? super C2>,
-	T extends Tuple2<C1, C2, T> & Comparable<? super T>
+  C1 extends Comparable<? super C1>,
+  C2 extends Comparable<? super C2>,
+  T extends Tuple2<C1, C2, T> & Comparable<? super T>
 >
-	extends Tuple<T>
+  extends Tuple<T>
 {
 
-	C1 getColumn1();
+  C1 getColumn1();
 
-	C2 getColumn2();
+  C2 getColumn2();
 }
