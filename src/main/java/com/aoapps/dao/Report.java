@@ -35,11 +35,11 @@ public interface Report {
   public static interface Parameter {
     public enum Type {
       TEXT {
-        @Override
-        public Object parse(String str) {
-          return str;
-        }
-      },
+      @Override
+      public Object parse(String str) {
+        return str;
+      }
+    },
       INTEGER {
         @Override
         public Object parse(String str) {

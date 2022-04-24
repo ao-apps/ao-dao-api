@@ -29,10 +29,10 @@ package com.aoapps.dao;
  * @author  AO Industries, Inc.
  */
 public interface TupleN<
-  C extends Comparable<? super C>,
-  T extends TupleN<C, T> & Comparable<? super T>
+    C extends Comparable<? super C>,
+    T extends TupleN<C, T> & Comparable<? super T>
 >
-  extends Tuple<T>
+    extends Tuple<T>
 {
 
   @Override

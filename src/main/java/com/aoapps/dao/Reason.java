@@ -24,7 +24,7 @@
 package com.aoapps.dao;
 
 public interface Reason
-  extends Comparable<Reason>
+    extends Comparable<Reason>
 {
 
   /**

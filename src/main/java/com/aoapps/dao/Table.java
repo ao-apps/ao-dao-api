@@ -37,10 +37,10 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public interface Table<
-  K extends Comparable<? super K>,
-  R extends Row<K, ?>
+    K extends Comparable<? super K>,
+    R extends Row<K, ?>
 >
-  extends Collection<R>
+    extends Collection<R>
 {
 
   /**
@@ -180,7 +180,7 @@ public interface Table<
   @SuppressWarnings("unchecked")
   default Iterator<R> iterator() {
     try {
-      return (Iterator<R>)getIterator();
+      return (Iterator<R>) getIterator();
     } catch (SQLException err) {
       throw new WrappedException(err);
     }

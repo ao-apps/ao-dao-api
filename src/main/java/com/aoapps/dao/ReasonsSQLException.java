@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ReasonsSQLException
-  extends SQLException
+    extends SQLException
 {
 
   private static final long serialVersionUID = 2L;

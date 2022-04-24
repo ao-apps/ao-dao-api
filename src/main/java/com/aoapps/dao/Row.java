@@ -24,8 +24,8 @@
 package com.aoapps.dao;
 
 public interface Row<
-  K extends Comparable<? super K>,
-  R extends Row<K, ?> & Comparable<? super R>
+    K extends Comparable<? super K>,
+    R extends Row<K, ?> & Comparable<? super R>
 > {
 
   /**

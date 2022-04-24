@@ -29,7 +29,7 @@ package com.aoapps.dao;
  * @author  AO Industries, Inc.
  */
 public interface Tuple<
-  T extends Tuple<T> & Comparable<? super T>
+    T extends Tuple<T> & Comparable<? super T>
 > {
 
   /**
