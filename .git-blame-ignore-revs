@@ -13,3 +13,6 @@ d8928cec490e37382a43930345f000ff25e29369
 
 # Indent changed to tabs per current standards.
 bcabcd3f30d861fdb642fca61b34f6ac0148718c
+
+# Performed automatic source code clean-up with rewrite-maven-plugin
+ecbecaba99bb0ccd6460650c8427bf42b5d8d072
