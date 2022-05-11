@@ -23,10 +23,13 @@
 
 package com.aoapps.dao;
 
+/**
+ * One row of a table.
+ */
 public interface Row<
     K extends Comparable<? super K>,
     R extends Row<K, ?> & Comparable<? super R>
-> {
+    > {
 
   /**
    * Gets the table this row is part of.

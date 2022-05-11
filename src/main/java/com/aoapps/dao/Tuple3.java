@@ -33,9 +33,7 @@ public interface Tuple3<
     C2 extends Comparable<? super C2>,
     C3 extends Comparable<? super C3>,
     T extends Tuple3<C1, C2, C3, T> & Comparable<? super T>
->
-    extends Tuple<T>
-{
+    > extends Tuple<T> {
 
   C1 getColumn1();
 

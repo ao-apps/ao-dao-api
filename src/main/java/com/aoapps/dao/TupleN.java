@@ -31,9 +31,7 @@ package com.aoapps.dao;
 public interface TupleN<
     C extends Comparable<? super C>,
     T extends TupleN<C, T> & Comparable<? super T>
->
-    extends Tuple<T>
-{
+    > extends Tuple<T> {
 
   @Override
   C[] getColumns();

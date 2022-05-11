@@ -27,15 +27,18 @@ import com.aoapps.lang.Throwables;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ReasonsSQLException
-    extends SQLException
-{
+/**
+ * A SQL exception with attached human-readable reasons.
+ */
+public class ReasonsSQLException extends SQLException {
 
   private static final long serialVersionUID = 2L;
 
   private final List<? extends Reason> reasons;
 
   /**
+   * Creates a new exception.
+   *
    * @param  reasons  No defensive copy is made
    *
    * @deprecated  Please provide SQLSTATE to {@link #ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
@@ -47,6 +50,8 @@ public class ReasonsSQLException
   }
 
   /**
+   * Creates a new exception.
+   *
    * @param  reasons  No defensive copy is made
    */
   public ReasonsSQLException(String message, String sqlState, List<? extends Reason> reasons) {
@@ -55,6 +60,8 @@ public class ReasonsSQLException
   }
 
   /**
+   * Gets the reasons for the exception.
+   *
    * @return  No defensive copy is made
    */
   @SuppressWarnings("ReturnOfCollectionOrArrayField")

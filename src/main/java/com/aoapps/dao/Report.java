@@ -32,14 +32,20 @@ import java.util.Map;
  */
 public interface Report {
 
+  /**
+   * A single parameter sent to the report query.
+   */
   public static interface Parameter {
+    /**
+     * The supported parameter types.
+     */
     public enum Type {
       TEXT {
-      @Override
-      public Object parse(String str) {
-        return str;
-      }
-    },
+        @Override
+        public Object parse(String str) {
+          return str;
+        }
+      },
       INTEGER {
         @Override
         public Object parse(String str) {
@@ -47,13 +53,12 @@ public interface Report {
         }
       };
 
-      /**
-       * Converts this value to a string.
-       */
-      /*
-      public String toString(Object value) {
-        return value.toString();
-      }*/
+      ///**
+      // * Converts this value to a string.
+      // */
+      //public String toString(Object value) {
+      //  return value.toString();
+      //}
 
       /**
        * Parses this value from a string.
@@ -83,12 +88,18 @@ public interface Report {
     Iterable<? extends Object> getValidValues() throws SQLException;
   }
 
+  /**
+   * The column alignments.
+   */
   enum Alignment {
     left,
     right,
     center
   }
 
+  /**
+   * One column within a report result.
+   */
   public static interface Column {
     /**
      * Gets the constant name of this column.
@@ -106,6 +117,9 @@ public interface Report {
     Alignment getAlignment();
   }
 
+  /**
+   * A single result of a report query.
+   */
   public static interface Result {
     List<? extends Column> getColumns() throws SQLException;
 

@@ -23,9 +23,11 @@
 
 package com.aoapps.dao;
 
+/**
+ * A human-readable reason, which is the cause of a restriction.
+ */
 public interface Reason
-    extends Comparable<Reason>
-{
+    extends Comparable<Reason> {
 
   /**
    * Gets the textual reason.

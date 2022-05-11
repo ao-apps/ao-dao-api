@@ -62,7 +62,7 @@ public interface Model {
   }
 
   /**
-   * Executes a transaction between any number of calls to this model and its tables.
+   * Executes an arbitrary transaction, providing automatic commit, rollback, and connection management.
    *
    * @see  #transactionRun(com.aoapps.lang.RunnableE)
    */
@@ -71,16 +71,16 @@ public interface Model {
   }
 
   /**
-   * Executes a transaction between any number of calls to this model and its tables.
+   * Executes an arbitrary transaction, providing automatic commit, rollback, and connection management.
    *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    *
    * @see  #transactionRun(java.lang.Class, com.aoapps.lang.RunnableE)
    */
-  <V, Ex extends Throwable> V transactionCall(Class<? extends Ex> eClass, CallableE<? extends V, ? extends Ex> callable) throws SQLException, Ex;
+  <V, Ex extends Throwable> V transactionCall(Class<? extends Ex> exClass, CallableE<? extends V, ? extends Ex> callable) throws SQLException, Ex;
 
   /**
-   * Executes a transaction between any number of calls to this model and its tables.
+   * Executes an arbitrary transaction, providing automatic commit, rollback, and connection management.
    *
    * @see  #transactionCall(com.aoapps.lang.concurrent.CallableE)
    */
@@ -92,6 +92,8 @@ public interface Model {
   }
 
   /**
+   * Executes an arbitrary transaction, providing automatic commit, rollback, and connection management.
+   *
    * @deprecated  Please use {@link #transactionRun(com.aoapps.lang.RunnableE)}
    */
   @Deprecated(forRemoval = true)
@@ -100,14 +102,14 @@ public interface Model {
   }
 
   /**
-   * Executes a transaction between any number of calls to this model and its tables.
+   * Executes an arbitrary transaction, providing automatic commit, rollback, and connection management.
    *
    * @param  <Ex>  An arbitrary exception type that may be thrown
    *
    * @see  #transactionCall(java.lang.Class, com.aoapps.lang.concurrent.CallableE)
    */
-  default <Ex extends Throwable> void transactionRun(Class<? extends Ex> eClass, RunnableE<? extends Ex> runnable) throws SQLException, Ex {
-    transactionCall(eClass, () -> {
+  default <Ex extends Throwable> void transactionRun(Class<? extends Ex> exClass, RunnableE<? extends Ex> runnable) throws SQLException, Ex {
+    transactionCall(exClass, () -> {
       runnable.run();
       return null;
     });

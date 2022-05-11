@@ -26,6 +26,9 @@ package com.aoapps.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Indicates something that may possibly be removed.
+ */
 public interface Removable {
 
   /**
@@ -34,5 +37,10 @@ public interface Removable {
    */
   List<? extends Reason> getCannotRemoveReasons() throws SQLException;
 
+  /**
+   * Removes the object.
+   *
+   * @throws ReasonsSQLException  when {@link #getCannotRemoveReasons()} would return non-empty.
+   */
   void remove() throws SecurityException, ReasonsSQLException, SQLException;
 }
