@@ -22,7 +22,7 @@ Simple data access objects framework API.
 * [Project Home](https://oss.aoapps.com/dao/api/)
 * [Changelog](https://oss.aoapps.com/dao/api/changelog)
 * [API Docs](https://oss.aoapps.com/dao/api/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/search?namespace=com.aoapps&q=a%3Aao-dao-api)
+* [Maven Central Repository](https://central.sonatype.com/artifact/com.aoapps/ao-dao-api)
 * [GitHub](https://github.com/ao-apps/ao-dao-api)
 
 ## Contact Us
