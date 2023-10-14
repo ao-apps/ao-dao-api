@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -251,6 +251,8 @@ public interface Table<
    */
   R get(K key) throws NoRowException, SQLException;
 
+  // TODO: getOptional
+
   /**
    * Gets an unmodifiable set of each object corresponding to the set of keys.
    * The elements will be in the set in the same order as the keys iterator.
@@ -278,6 +280,8 @@ public interface Table<
     return Collections.unmodifiableSet(results);
   }
 
+  // TODO: getOrderedRowsOptional
+
   /**
    * Gets an unmodifiable sorted set of each object corresponding to the set of
    * keys, sorted by their natural ordering.
@@ -302,4 +306,6 @@ public interface Table<
     } while (iter.hasNext());
     return Collections.unmodifiableSortedSet(results);
   }
+
+  // TODO: getRowsOptional
 }
