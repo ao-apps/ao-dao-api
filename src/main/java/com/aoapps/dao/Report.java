@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2013, 2015, 2016, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2011, 2013, 2015, 2016, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -121,8 +121,14 @@ public interface Report {
    * A single result of a report query.
    */
   public static interface Result {
+    /**
+     * Gets the result columns.
+     */
     List<? extends Column> getColumns() throws SQLException;
 
+    /**
+     * Gets the result data.
+     */
     Iterable<? extends Iterable<?>> getTableData() throws SQLException;
   }
 
