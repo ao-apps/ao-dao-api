@@ -58,10 +58,9 @@ public interface Tuple<
   /**
    * The default ordering is based on column value comparisons.  If both values
    * are Strings, will use {@linkplain Model#getComparator() the model comparator}.
-   * <p>
-   * If one tuple has few columns than the other, and all the values are equal,
-   * the tuple with fewer columns is considered to be first.
-   * </p>
+   *
+   * <p>If one tuple has few columns than the other, and all the values are equal,
+   * the tuple with fewer columns is considered to be first.</p>
    */
   // @Override
   int compareTo(T o);

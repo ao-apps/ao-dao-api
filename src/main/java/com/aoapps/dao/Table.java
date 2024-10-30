@@ -1,6 +1,6 @@
 /*
  * ao-dao-api - Simple data access objects framework API.
- * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020, 2021, 2022, 2023  AO Industries, Inc.
+ * Copyright (C) 2011, 2012, 2013, 2015, 2016, 2020, 2021, 2022, 2023, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -53,9 +53,8 @@ public interface Table<
    * Clears the caches for this table that apply to the current thread.
    * This is used to end a caching session, generally short-term and associated
    * with a single request or process.
-   * <p>
-   * Any overriding method should call super.clearCaches().
-   * </p>
+   *
+   * <p>Any overriding method should call super.clearCaches().</p>
    */
   default void clearCaches() {
     // Do nothing
@@ -66,9 +65,8 @@ public interface Table<
    * is maintained between users for global tables.  For per-user caches only
    * your own view is affected; no updates will be seen until the end
    * of their caching transaction, generally a web request.
-   * <p>
-   * Any overriding method should call super.tableUpdated().
-   * </p>
+   *
+   * <p>Any overriding method should call super.tableUpdated().</p>
    */
   default void tableUpdated() {
     // Do nothing
@@ -214,21 +212,19 @@ public interface Table<
 
   /**
    * Gets all rows in no particular order.
-   * <p>
-   * This is an unmodifiable snapshot of the data and will not change over time.
+   *
+   * <p>This is an unmodifiable snapshot of the data and will not change over time.
    * It may be iterated multiple times with the same results.  The contents
-   * are not changed by the transactions of the current user or any other user.
-   * </p>
+   * are not changed by the transactions of the current user or any other user.</p>
    */
   Set<? extends R> getUnsortedRows() throws SQLException;
 
   /**
    * Gets all rows, sorted by their natural ordering.
-   * <p>
-   * This is an unmodifiable snapshot of the data and will not change over time.
+   *
+   * <p>This is an unmodifiable snapshot of the data and will not change over time.
    * It may be iterated multiple times with the same results.  The contents
-   * are not changed by the transactions of the current user or any other user.
-   * </p>
+   * are not changed by the transactions of the current user or any other user.</p>
    */
   SortedSet<? extends R> getRows() throws SQLException;
 
@@ -258,11 +254,10 @@ public interface Table<
    * The elements will be in the set in the same order as the keys iterator.
    * If a key is found twice, the element we be in the position of the first
    * key.
-   * <p>
-   * This is an unmodifiable snapshot of the data and will not change over time.
+   *
+   * <p>This is an unmodifiable snapshot of the data and will not change over time.
    * It may be iterated multiple times with the same results.  The contents
-   * are not changed by the transactions of the current user or any other user.
-   * </p>
+   * are not changed by the transactions of the current user or any other user.</p>
    *
    * @throws NoRowException if any key is not found
    * @throws SQLException if database error occurs
@@ -285,11 +280,10 @@ public interface Table<
   /**
    * Gets an unmodifiable sorted set of each object corresponding to the set of
    * keys, sorted by their natural ordering.
-   * <p>
-   * This is an unmodifiable snapshot of the data and will not change over time.
+   *
+   * <p>This is an unmodifiable snapshot of the data and will not change over time.
    * It may be iterated multiple times with the same results.  The contents
-   * are not changed by the transactions of the current user or any other user.
-   * </p>
+   * are not changed by the transactions of the current user or any other user.</p>
    *
    * @throws NoRowException if any key is not found
    * @throws SQLException if database error occurs
