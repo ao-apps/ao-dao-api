@@ -164,7 +164,7 @@ public interface Table<
    * Iterates the rows in sorted order.
    * This also provides JavaBeans-compatible iterator.
    *
-   * @see #getRows() Different calls may return different results, for
+   * @see Table#getRows() Different calls may return different results, for
    *                 snapshot-like behavior see getRows.
    */
   @SuppressWarnings("unchecked")
@@ -175,7 +175,7 @@ public interface Table<
   /**
    * Iterates the rows in sorted order.
    *
-   * @see  #getIterator()
+   * @see  Table#getIterator()
    */
   @Override
   @SuppressWarnings("unchecked")

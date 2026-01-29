@@ -40,7 +40,7 @@ public interface Removable {
   /**
    * Removes the object.
    *
-   * @throws ReasonsSQLException  when {@link #getCannotRemoveReasons()} would return non-empty.
+   * @throws ReasonsSQLException  when {@link Removable#getCannotRemoveReasons()} would return non-empty.
    */
   void remove() throws SecurityException, ReasonsSQLException, SQLException;
 }

@@ -41,7 +41,7 @@ public class ReasonsSQLException extends SQLException {
    *
    * @param  reasons  No defensive copy is made
    *
-   * @deprecated  Please provide SQLSTATE to {@link #ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
+   * @deprecated  Please provide SQLSTATE to {@link ReasonsSQLException#ReasonsSQLException(java.lang.String, java.lang.String, java.util.List)}
    */
   @Deprecated(forRemoval = false)
   public ReasonsSQLException(String message, List<? extends Reason> reasons) {
